@@ -1,0 +1,4 @@
+class ArtPiecesController < ApplicationController
+
+
+end
