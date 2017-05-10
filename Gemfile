@@ -32,6 +32,7 @@ group :development, :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'aws-sdk-rails'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
 end
 
 group :development do
@@ -39,7 +40,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
   gem 'database_cleaner'
 end
 
