@@ -29,24 +29,46 @@ RSpec.describe ArtPiecesController, type: :controller do
   # ArtPiece. As you add validations to ArtPiece, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { title: 'The Mona Lisa', artist: 'Leonardo da Vinci'}
+    attributes_for(:art_piece)
   }
 
   let(:invalid_attributes) {
-    { title: nil, artist: nil }
+    attributes_for(:void_art_piece)
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # ArtPiecesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
+  let(:expected_keys) {['id', 'title', 'artist', 'url', 'created_at', 'updated_at']}
 
   describe "GET #index" do
-    it "returns a success response" do
-      art_piece = ArtPiece.create! valid_attributes
+
+
+    before do
+      create(:art_piece)
+      create(:art_piece)
       get :index, params: {}, session: valid_session
+    end
+
+    it "returns a success response" do
       expect(response).to be_success
     end
+
+    it "returns an array of length equal to num art_pieces" do
+      json = JSON.parse(response.body)
+      expect(json.length).to eq(2)
+    end
+
+    it "each JSON object in returned array represents a complete art_piece" do
+      json = JSON.parse(response.body)
+      json.each do |art_piece|
+        expect(art_piece.keys).to contain_exactly(*expected_keys)
+      end
+    end
+
+
+
   end
 
   describe "GET #show" do
@@ -55,6 +77,13 @@ RSpec.describe ArtPiecesController, type: :controller do
       get :show, params: {id: art_piece.to_param}, session: valid_session
       expect(response).to be_success
     end
+
+    it "returns a valid JSON art_piece" do
+      art_piece = create(:art_piece)
+      get :show, params: {id: art_piece.id}
+      response.body.should == art_piece.to_json
+    end
+
   end
 
   describe "POST #create" do
