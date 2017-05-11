@@ -46,8 +46,8 @@ RSpec.describe ArtPiecesController, type: :controller do
 
 
     before do
-      create(:art_piece)
-      create(:art_piece)
+      pp create(:art_piece)
+      pp create(:art_piece)
       get :index, params: {}, session: valid_session
     end
 
