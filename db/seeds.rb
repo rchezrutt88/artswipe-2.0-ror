@@ -21,3 +21,18 @@ ArtPiece.create(
     url: 'https://s3.amazonaws.com/artswipe/art-images/Sylvia-von-Harden-Otto-Dix-831x1024.jpg'
 )
 
+User.create(
+    email: 'x@x.com',
+    password: 'xxxxxxxx',
+    password_confirmation: 'xxxxxxxx'
+)
+
+User.create(
+    email: 'y@y.com',
+    password: 'yyyyyyyy',
+    password_confirmation: 'yyyyyyyy'
+)
+
+
+
+
