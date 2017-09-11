@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Art Works</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Date painted</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @art_works.each do |art_work| %>
+      <tr>
+        <td><%= art_work.title %></td>
+        <td><%= art_work.artist %></td>
+        <td><%= art_work.date_painted %></td>
+        <td><%= art_work.location %></td>
+        <td><%= link_to 'Show', art_work %></td>
+        <td><%= link_to 'Edit', edit_art_work_path(art_work) %></td>
+        <td><%= link_to 'Destroy', art_work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Art Work', new_art_work_path %>
