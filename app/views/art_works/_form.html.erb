@@ -33,10 +33,17 @@
 
     <div class='field'>
       <%= form.label :art_image %>
-      <%= form.file_field :art_image %>
+      <%= form.file_field :art_image, id: 'art_image' %>
     </div>
 
-  <div class="actions">
+    <%= hidden_field_tag 'art_image[x1]', '123' %>
+    <%= hidden_field_tag 'art_image[y1]' %>
+    <%= hidden_field_tag 'art_image[x2]' %>
+    <%= hidden_field_tag 'art_image[y2]' %>
+    <%= hidden_field_tag 'art_image[length]' %>
+    <%= hidden_field_tag 'art_image[width]' %>
+
+    <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

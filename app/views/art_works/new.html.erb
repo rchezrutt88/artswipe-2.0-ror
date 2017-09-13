@@ -2,10 +2,51 @@
 
 <%= render 'form', art_work: @art_work %>
 
-<%= image_tag 'art_works/C4023.jpg', id: 'target' %>
+<div>
+  <img src='#' id='target'>
+</div>
+
+<div style='width:100px;height:100px;overflow:hidden;margin-left:5px;'>
+  <img src='#' id='preview'>
+</div>
 
 <%= link_to 'Back', art_works_path %>
 
 <script>
-  $('#target').Jcrop();
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#target').attr('src', e.target.result);
+        $('#preview').attr('src', e.target.result);
+        $('#target').Jcrop({
+            onChange: showPreview,
+            onSelect: showPreview,
+            aspectRatio: 1
+          }
+        );
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function showPreview(coords) {
+    var rx = 100 / coords.w;
+    var ry = 100 / coords.h;
+
+    $('#preview').css({
+      width: Math.round(rx * 500) + 'px',
+      height: Math.round(ry * 370) + 'px',
+      marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+      marginTop: '-' + Math.round(ry * coords.y) + 'px'
+    });
+  }
+
+  $('#art_image').change(function () {
+    readURL(this);
+  });
+
+
 </script>
