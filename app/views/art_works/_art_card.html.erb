@@ -1,0 +1,11 @@
+<div class="card card-body" style="width: 20rem;">
+  <%= image_tag art_work.art_image.url, class: 'card-img-top' %>
+  <div class="card-block">
+    <h4 class="card-title"><%= art_work.title %></h4>
+    <h5 class="card-subtitle"><%= art_work.artist %></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <%= link_to 'Show', art_work, class: 'btn btn-primary' %>
+    <%= link_to 'Edit', edit_art_work_path(art_work) %>
+    <%= link_to 'Destroy', art_work, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>

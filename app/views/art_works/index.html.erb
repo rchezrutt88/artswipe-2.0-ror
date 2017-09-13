@@ -16,13 +16,7 @@
   <tbody>
     <% @art_works.each do |art_work| %>
       <tr>
-        <td><%= art_work.title %></td>
-        <td><%= art_work.artist %></td>
-        <td><%= art_work.date_painted %></td>
-        <td><%= art_work.location %></td>
-        <td><%= link_to 'Show', art_work %></td>
-        <td><%= link_to 'Edit', edit_art_work_path(art_work) %></td>
-        <td><%= link_to 'Destroy', art_work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= render 'art_card', art_work: art_work %>
       </tr>
     <% end %>
   </tbody>

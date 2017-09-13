@@ -2,7 +2,6 @@
   "name": "artswipe3",
   "private": true,
   "dependencies": {
-    "bootstrap": "next",
     "jquery-jcrop": "^0.9.13"
   }
 }

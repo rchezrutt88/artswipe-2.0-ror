@@ -1,4 +1,4 @@
-class ArtWorksController < ApplicationController
+class ArtWorksController < BaseController
   before_action :set_art_work, only: [:show, :edit, :update, :destroy]
 
   # GET /art_works
@@ -25,7 +25,6 @@ class ArtWorksController < ApplicationController
   # POST /art_works.json
   def create
     @art_work = ArtWork.new(art_work_params)
-
     respond_to do |format|
       if @art_work.save
         format.html { redirect_to @art_work, notice: 'Art work was successfully created.' }
@@ -69,6 +68,6 @@ class ArtWorksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def art_work_params
-      params.require(:art_work).permit(:title, :artist, :date_painted, :location)
+      params.require(:art_work).permit(:title, :artist, :date_painted, :location, :art_image)
     end
 end

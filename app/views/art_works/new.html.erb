@@ -2,4 +2,10 @@
 
 <%= render 'form', art_work: @art_work %>
 
+<%= image_tag 'art_works/C4023.jpg', id: 'target' %>
+
 <%= link_to 'Back', art_works_path %>
+
+<script>
+  $('#target').Jcrop();
+</script>
