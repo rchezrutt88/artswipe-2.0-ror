@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.3'
 gem 'carrierwave', '~> 1.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jcrop-rails-v2', '~> 0.9.12.3'
 
 group :development, :test do

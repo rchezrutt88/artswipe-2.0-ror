@@ -61,13 +61,13 @@ class ArtWorksController < BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_art_work
-      @art_work = ArtWork.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_art_work
+    @art_work = ArtWork.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def art_work_params
-      params.require(:art_work).permit(:title, :artist, :date_painted, :location, :art_image)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def art_work_params
+    params.require(:art_work).permit(:title, :artist, :date_painted, :location, :art_image, crop: [:x1, :y1, :x2, :y2, :length, :width])
+  end
 end

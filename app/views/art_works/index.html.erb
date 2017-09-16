@@ -2,25 +2,11 @@
 
 <h1>Art Works</h1>
 
-<table>
-  <thead>
+<% @art_works.each do |art_work| %>
     <tr>
-      <th>Title</th>
-      <th>Artist</th>
-      <th>Date painted</th>
-      <th>Location</th>
-      <th colspan="3"></th>
+      <%= render 'art_card', art_work: art_work %>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @art_works.each do |art_work| %>
-      <tr>
-        <%= render 'art_card', art_work: art_work %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% end %>
 
 <br>
 
