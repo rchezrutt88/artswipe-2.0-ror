@@ -47,14 +47,18 @@ class ArtImageUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    "something.jpg" if original_filename
+    "#{model.title.parameterize}.jpg" if original_filename
   end
 
   private
 
   def crop
     manipulate! do |img|
-      img.crop!(model.crop_x1.to_i, model.crop_y1.to_i, model.crop_width.to_i, model.crop_height.to_i)
+      x = model.crop_coords[:x1].to_i
+      y = model.crop_coords[:y1].to_i
+      width = model.crop_coords[:width].to_i
+      height = model.crop_coords[:height].to_i
+      img.crop!(x, y, width, height)
     end
   end
 end

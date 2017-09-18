@@ -25,6 +25,8 @@ class ArtWorksController < BaseController
   # POST /art_works.json
   def create
     @art_work = ArtWork.new(art_work_params)
+    @art_work.crop_coords = params[:crop_coords]
+    @art_work.art_image = params[:art_work][:art_image]
     respond_to do |format|
       if @art_work.save
         format.html { redirect_to @art_work, notice: 'Art work was successfully created.' }
@@ -71,7 +73,6 @@ class ArtWorksController < BaseController
     params.require(:art_work).permit(:title,
                                      :artist,
                                      :date_painted,
-                                     :location,
-                                     :art_image, :crop_x1, :crop_y1, :crop_x2, :crop_y2, :crop_width, :crop_height)
+                                     :location)
   end
 end

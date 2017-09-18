@@ -1,13 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  artist: MyString
-  date_painted: MyString
-  location: MyString
+  title: Portrait of Madame X
+  artist: John Singer Sargent
+  date_painted: 1884
+  location: Metropolitan Museum of Art
+  art_image:
 
 two:
-  title: MyString
-  artist: MyString
-  date_painted: MyString
-  location: MyString
+  title: Jeanne Hebuterne (1919)
+  artist: Amedeo Modigliani
+  date_painted: 1919
+  location: Private Collection
+
+three:
+  title: The Garden of Earthly Delights
+  artist: Hieronymus Bosch
+  date_painted: 1503-1515
+  location: Museo Nacional Del Prado
