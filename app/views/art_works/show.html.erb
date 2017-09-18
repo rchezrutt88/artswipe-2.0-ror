@@ -1,28 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @art_work.title %>
-</p>
-
-<p>
-  <strong>Artist:</strong>
-  <%= @art_work.artist %>
-</p>
-
-<p>
-  <strong>Date painted:</strong>
-  <%= @art_work.date_painted %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @art_work.location %>
-</p>
-
-<p>
-  <%= image_tag(@art_work.art_image.url) %>
-</p>
+<% render 'art_card', art_work: @art_work %>
 
 <%= link_to 'Edit', edit_art_work_path(@art_work) %> |
 <%= link_to 'Back', art_works_path %>

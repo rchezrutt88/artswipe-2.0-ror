@@ -68,6 +68,10 @@ class ArtWorksController < BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def art_work_params
-    params.require(:art_work).permit(:title, :artist, :date_painted, :location, :art_image, crop: [:x1, :y1, :x2, :y2, :length, :width])
+    params.require(:art_work).permit(:title,
+                                     :artist,
+                                     :date_painted,
+                                     :location,
+                                     :art_image, :crop_x1, :crop_y1, :crop_x2, :crop_y2, :crop_width, :crop_height)
   end
 end

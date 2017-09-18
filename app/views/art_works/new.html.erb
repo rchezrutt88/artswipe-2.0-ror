@@ -22,7 +22,7 @@
         $('#preview').attr('src', e.target.result);
         $('#target').Jcrop({
             onChange: showPreview,
-            onSelect: showPreview,
+            onSelect: handleSelectComplete,
             aspectRatio: 1
           }
         );
@@ -43,6 +43,21 @@
       marginTop: '-' + Math.round(ry * coords.y) + 'px'
     });
   }
+  
+  function updateSubmitImageForm(coords) {
+    $('#art_work_crop_x1').val(coords.x);
+    $('#art_work_crop_y1').val(coords.y);
+    $('#art_work_crop_x2').val(coords.x2);
+    $('#art_work_crop_y2').val(coords.y2);
+    $('#art_work_crop_width').val(coords.w);
+    $('#art_work_crop_height').val(coords.h);
+  }
+
+  function handleSelectComplete(coords) {
+    showPreview(coords);
+    updateSubmitImageForm(coords);
+  }
+
 
   $('#art_image').change(function () {
     readURL(this);

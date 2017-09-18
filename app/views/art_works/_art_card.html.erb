@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-body">
-  <%= image_tag art_work.art_image.url %>
+  <%= image_tag art_work.art_image.thumb.url %>
     <h4><%= art_work.title %></h4>
     <h5 ><%= art_work.artist %></h5>
     <%= link_to 'Show', art_work, class: 'btn btn-primary' %>
