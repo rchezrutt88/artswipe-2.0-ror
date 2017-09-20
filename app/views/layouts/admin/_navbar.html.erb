@@ -29,9 +29,7 @@
           <a href="<%= art_works_url %>">View Artwork <span class="sr-only">(current)</span></a>
         </li>
         <li>
-          <%= link_to_unless user_signed_in?, 'Sign in', new_user_session_url do %>
-              <%= link_to 'Sign out', destroy_user_session_url, method: :delete %>
-          <% end %>
+          <a href='<%= destroy_user_session_url %>'>Sign Out</a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
