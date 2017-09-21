@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Art Works</h1>
+
+<% @artworks.each do |artwork| %>
+    <tr>
+      <%= render 'art_card', artwork: artwork %>
+    </tr>
+<% end %>
+
+<br>
+
+<%= link_to 'New Art Work', new_artwork_path %>

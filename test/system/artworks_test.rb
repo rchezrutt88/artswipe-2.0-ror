@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ArtWorksTest < ApplicationSystemTestCase
+class ArtworksTest < ApplicationSystemTestCase
   # test "visiting the index" do
   #   visit art_works_url
   #
