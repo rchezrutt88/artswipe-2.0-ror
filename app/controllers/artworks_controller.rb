@@ -1,6 +1,7 @@
 class ArtworksController < ApplicationController
-  before_action :set_artwork, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :set_artwork, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :upvote, :downvote]
+  before_action :set_user, only: [:upvote, :downvote]
 
   # GET /art_works
   # GET /art_works.json
@@ -63,10 +64,22 @@ class ArtworksController < ApplicationController
     end
   end
 
+  def upvote
+    @artwork.upvote_from @user
+  end
+
+  def downvote
+    @artwork.downvote_from @user
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_artwork
     @artwork = Artwork.find(params[:id])
+  end
+
+  def set_user
+    @user = current_user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
