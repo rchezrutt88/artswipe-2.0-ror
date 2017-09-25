@@ -3,6 +3,8 @@
   <%= image_tag artwork.art_image.thumb.url, size: 200, alt: 'image missing' %>
     <h4><%= artwork.title %></h4>
     <h5 ><%= artwork.artist %></h5>
+    <%= thumbs_up (artwork)%>
+    <%= thumbs_down (artwork)%>
     <%= link_to 'Show', artwork, class: 'btn btn-primary' %>
     <%= link_to 'Edit', edit_artwork_path(artwork) %>
     <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
