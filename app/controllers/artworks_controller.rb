@@ -1,7 +1,6 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :upvote, :downvote]
-  before_action :set_user, only: [:upvote, :downvote]
+  before_action :authenticate_user!, :set_user, only: [:new, :create, :edit, :update, :upvote, :downvote]
 
   # GET /art_works
   # GET /art_works.json

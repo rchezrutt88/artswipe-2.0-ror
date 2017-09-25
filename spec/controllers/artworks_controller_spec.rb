@@ -28,12 +28,15 @@ RSpec.describe ArtworksController, :type => :controller do
     end
     it 'fails to upvote without user' do
       patch :upvote, params: { id: @artwork }
+      expect(response).to redirect_to('http://test.host/users/sign_in')
       expect(@artwork.votes_for.size).to eq(0)
     end
     it 'it upvotes with signed in user' do
       sign_in(@user)
       patch :upvote, params: { id: @artwork }
       expect(@artwork.votes_for.size).to eq(1)
+      expect(@artwork.get_upvotes.first.voter).to eq(@user)
+      expect(@user.voted_up_on? @artwork).to be true
     end
 
   end
