@@ -16,5 +16,4 @@ module ImageUploaderHelper
     #   end
     # end
   end
-
 end

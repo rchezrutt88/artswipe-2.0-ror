@@ -6,5 +6,4 @@ class ApplicationController < ActionController::Base
   def show
     render 'layouts/landing_page'
   end
-
 end

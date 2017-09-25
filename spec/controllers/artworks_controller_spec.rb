@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ArtworksController, :type => :controller do
+RSpec.describe ArtworksController, type: :controller do
   describe 'GET index' do
     it 'responds successfully' do
       artwork = Artwork.create
@@ -15,7 +15,8 @@ RSpec.describe ArtworksController, :type => :controller do
     end
 
     it 'loads all of the artworks into @artworks' do
-      artwork1, artwork2 = Artwork.create!, Artwork.create!
+      artwork1 = Artwork.create!
+      artwork2 = Artwork.create!
       get :index
       expect(assigns(:artworks)).to eq([artwork1, artwork2])
     end
@@ -36,8 +37,7 @@ RSpec.describe ArtworksController, :type => :controller do
       patch :upvote, params: { id: @artwork }
       expect(@artwork.votes_for.size).to eq(1)
       expect(@artwork.get_upvotes.first.voter).to eq(@user)
-      expect(@user.voted_up_on? @artwork).to be true
+      expect(@user.voted_up_on?(@artwork)).to be true
     end
-
   end
 end

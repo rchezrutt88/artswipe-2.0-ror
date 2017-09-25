@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Artworks</h1>
+<div class='row'>
 
 <% @artworks.each do |artwork| %>
-    <tr>
+    <div class='col-md-2'>
       <%= render 'art_card', artwork: artwork %>
-    </tr>
+    </div>
 <% end %>
+</div>
 
 <br>
 

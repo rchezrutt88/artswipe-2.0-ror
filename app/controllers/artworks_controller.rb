@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
-  before_action :set_artwork, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-  before_action :authenticate_user!, :set_user, only: [:new, :create, :edit, :update, :upvote, :downvote]
+  before_action :set_artwork, only: %i[show edit update destroy upvote downvote]
+  before_action :authenticate_user!, only: %i[new create edit update upvote downvote]
 
   # GET /art_works
   # GET /art_works.json
@@ -10,8 +10,7 @@ class ArtworksController < ApplicationController
 
   # GET /art_works/1
   # GET /art_works/1.json
-  def show
-  end
+  def show; end
 
   # GET /art_works/new
   def new
@@ -19,8 +18,7 @@ class ArtworksController < ApplicationController
   end
 
   # GET /art_works/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /art_works
   # POST /art_works.json
@@ -64,21 +62,26 @@ class ArtworksController < ApplicationController
   end
 
   def upvote
-    @artwork.upvote_from @user
+    if current_user.voted_up_on? @artwork
+      @artwork.unliked_by current_user
+    else
+      @artwork.upvote_from current_user
+    end
   end
 
   def downvote
-    @artwork.downvote_from @user
+    if current_user.voted_down_on? @artwork
+      @artwork.undisliked_by current_user
+    else
+      @artwork.downvote_from current_user
+    end
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_artwork
     @artwork = Artwork.find(params[:id])
-  end
-
-  def set_user
-    @user = current_user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

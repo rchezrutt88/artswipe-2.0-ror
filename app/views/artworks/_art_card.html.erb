@@ -1,12 +1,13 @@
 <div class="panel panel-default art-card">
   <div class="panel-body">
-  <%= image_tag artwork.art_image.thumb.url, size: 200, alt: 'image missing' %>
+    <h5>Score:  <%= score (artwork) %> </h5>
+  <%= magnific_img_tag (artwork) %>
     <h4><%= artwork.title %></h4>
     <h5 ><%= artwork.artist %></h5>
     <%= thumbs_up (artwork)%>
     <%= thumbs_down (artwork)%>
-    <%= link_to 'Show', artwork, class: 'btn btn-primary' %>
-    <%= link_to 'Edit', edit_artwork_path(artwork) %>
-    <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Show', artwork, class: 'btn btn-sm btn-primary' %>
+    <%= link_to 'Edit', edit_artwork_path(artwork), class: 'btn btn-sm btn-primary' %>
+    <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
   </div>
 </div>

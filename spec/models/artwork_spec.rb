@@ -14,10 +14,8 @@
 
 require 'rails_helper'
 
-RSpec.describe Artwork, :type => :model do
-
+RSpec.describe Artwork, type: :model do
   describe 'voting' do
-
     describe 'user upvotes artwork' do
       before :each do
         @user = create(:user)
@@ -65,10 +63,6 @@ RSpec.describe Artwork, :type => :model do
         expect(@artwork.get_downvotes.size).to eq(1)
         expect(@artwork.get_downvotes.first.voter).to eq(@user2)
       end
-
-
     end
   end
-
-
 end

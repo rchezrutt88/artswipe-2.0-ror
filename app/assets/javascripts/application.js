@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require jquery.Jcrop
+//= require magnific-popup
 //= require_tree .
