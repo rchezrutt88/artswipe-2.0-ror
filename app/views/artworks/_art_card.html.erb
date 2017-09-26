@@ -1,6 +1,6 @@
-<div class="panel panel-default art-card">
+<div class="panel panel-default art-card" id='art-card-<%= artwork.id %>'>
   <div class="panel-body">
-    <h5>Score:  <%= score (artwork) %> </h5>
+    <h5 class='score'>Score:  <%= score (artwork) %> </h5>
   <%= magnific_img_tag (artwork) %>
     <h4><%= artwork.title %></h4>
     <h5 ><%= artwork.artist %></h5>
