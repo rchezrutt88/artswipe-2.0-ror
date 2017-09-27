@@ -53,11 +53,15 @@ class ArtImageUploader < CarrierWave::Uploader::Base
 
   def crop
     manipulate! do |img|
-      x = model.crop_coords[:x1].to_i
-      y = model.crop_coords[:y1].to_i
-      width = model.crop_coords[:width].to_i
-      height = model.crop_coords[:height].to_i
-      img.crop!(x, y, width, height)
+      if model.crop_coords
+        x = model.crop_coords[:x1].to_i
+        y = model.crop_coords[:y1].to_i
+        width = model.crop_coords[:width].to_i
+        height = model.crop_coords[:height].to_i
+        img.crop!(x, y, width, height)
+      else
+        img.crop!(NorthGravity, 400, 400)
+      end
     end
   end
 end
