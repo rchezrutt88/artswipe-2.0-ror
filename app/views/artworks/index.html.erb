@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Artworks</h1>
-<div class='row'>
 
-<% @artworks.each do |artwork| %>
-    <div class='col-md-2'>
-      <%= render 'art_card', artwork: artwork %>
+<% @artworks.each_slice(6) do |artworks| %>
+    <div class="row">
+      <% artworks.each do |a| %>
+          <div class="col-md-2">
+            <%= render 'art_card', artwork: a %>
+          </div>
+      <% end %>
     </div>
 <% end %>
-</div>
 
 <br>
 
