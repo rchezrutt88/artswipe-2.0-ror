@@ -34,7 +34,7 @@ class ArtImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :crop
+    process resize_to_fill: [600, 600, Magick::NorthGravity]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -60,7 +60,7 @@ class ArtImageUploader < CarrierWave::Uploader::Base
         height = model.crop_coords[:height].to_i
         img.crop!(x, y, width, height)
       else
-        img.crop!(NorthGravity, 400, 400)
+        img.crop!(Magick::NorthWestGravity, 800, 800)
       end
     end
   end
