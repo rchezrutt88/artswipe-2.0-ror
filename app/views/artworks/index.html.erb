@@ -2,15 +2,16 @@
 
 <h1>Artworks</h1>
 
-<% @artworks.each_slice(6) do |artworks| %>
-    <div class="row">
-      <% artworks.each do |a| %>
-          <div class="col-md-2">
-            <%= render 'art_card', artwork: a %>
-          </div>
-      <% end %>
-    </div>
-<% end %>
+<div class='art-card-grid'>
+  <% @artworks.each_slice(6) do |artworks| %>
+      <div class="row">
+        <% artworks.each do |a| %>
+            <div class="col-md-2" align='center'>
+              <%= render 'art_card', artwork: a %>
+            </div>
+        <% end %>
+      </div>
+  <% end %></div>
 
 <br>
 
