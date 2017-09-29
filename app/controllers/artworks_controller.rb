@@ -5,7 +5,7 @@ class ArtworksController < ApplicationController
   # GET /art_works
   # GET /art_works.json
   def index
-    @artworks = Artwork.all
+    @artworks = Artwork.order([params[:sort_by]])
   end
 
   # GET /art_works/1
@@ -89,6 +89,7 @@ class ArtworksController < ApplicationController
     params.require(:artwork).permit(:title,
                                     :artist,
                                     :date_painted,
-                                    :location)
+                                    :location,
+                                    :sort_by)
   end
 end

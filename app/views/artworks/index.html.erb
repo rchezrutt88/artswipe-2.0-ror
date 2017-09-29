@@ -2,6 +2,23 @@
 
 <h1>Artworks</h1>
 
+ <!--FIXME doesn't seem right to reference params in view-->
+<div class='row'>
+  <div class='col-md-1'>
+    <%= form_tag artworks_url, method: :get, id: 'sort-by-form' do %>
+        <%= label_tag 'sort_by', 'Sort by:' %>
+        <%= select_tag 'sort_by', options_for_select(
+            { 'Score': 'score',
+              'Title': 'title',
+              'Artist': 'artist',
+              'Date added': 'created_at' },
+            params[:sort_by]
+        ), onchange: 'this.form.submit()' %>
+    <% end %>
+  </div>
+</div>
+
+<br>
 <div class='art-card-grid'>
   <% @artworks.each_slice(6) do |artworks| %>
       <div class="row">
