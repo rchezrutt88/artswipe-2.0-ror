@@ -2,18 +2,19 @@
 
 <h1>Artworks</h1>
 
- <!--FIXME doesn't seem right to reference params in view-->
+<!--FIXME doesn't seem right to reference params in view-->
 <div class='row'>
   <div class='col-md-1'>
     <%= form_tag artworks_url, method: :get, id: 'sort-by-form' do %>
         <%= label_tag 'sort_by', 'Sort by:' %>
         <%= select_tag 'sort_by', options_for_select(
-            { 'Score': 'score',
+            { 'Score': 'cached_votes_score DESC',
               'Title': 'title',
               'Artist': 'artist',
               'Date added': 'created_at' },
             params[:sort_by]
-        ), onchange: 'this.form.submit()' %>
+        ), include_blank: true,
+                       onchange: 'this.form.submit()' %>
     <% end %>
   </div>
 </div>
