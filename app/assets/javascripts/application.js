@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require jquery.Jcrop
 //= require magnific-popup
+//= require jquery-ui
 //= require_tree .
