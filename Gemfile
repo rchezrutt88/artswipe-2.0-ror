@@ -42,6 +42,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'magnific-popup-rails', '~> 1.1.0'
 gem 'rmagick', '~> 2.15', '>= 2.15.2'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
