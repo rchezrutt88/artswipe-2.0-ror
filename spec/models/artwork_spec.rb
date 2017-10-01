@@ -17,6 +17,7 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  gallery_id              :integer
 #
 
 require 'rails_helper'

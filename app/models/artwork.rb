@@ -17,10 +17,14 @@
 #  cached_weighted_score   :integer          default(0)
 #  cached_weighted_total   :integer          default(0)
 #  cached_weighted_average :float            default(0.0)
+#  gallery_id              :integer
 #
 
 class Artwork < ApplicationRecord
   mount_uploader :art_image, ArtImageUploader
   attr_accessor :crop_coords
+  belongs_to :gallery, optional: true
   acts_as_votable
+
+  validates_uniqueness_of :title
 end
