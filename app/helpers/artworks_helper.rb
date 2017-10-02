@@ -6,7 +6,8 @@ module ArtworksHelper
         thumbs_up_icon_style(artwork),
         upvote_artwork_url(artwork),
         method: :put,
-        remote: true
+        remote: true,
+        class: 'upvote-link'
       )
     else
       thumbs_up_icon_style artwork
@@ -19,7 +20,8 @@ module ArtworksHelper
         thumbs_down_icon_style(artwork),
         downvote_artwork_url(artwork),
         method: :put,
-        remote: true
+        remote: true,
+        class: 'downvote-link'
       )
     else
       thumbs_down_icon_style artwork

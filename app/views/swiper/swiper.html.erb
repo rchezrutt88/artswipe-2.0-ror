@@ -1,0 +1,66 @@
+<!-- Slider main container -->
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="swiper-container">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <%= render 'artworks/art_card', artwork: @artworks.first %>
+        </div>
+        <div class="swiper-slide">
+          <%= render 'artworks/art_card', artwork: @artworks.second %>
+        </div>
+        <div class="swiper-slide">
+          <%= render 'artworks/art_card', artwork: @artworks.third %>
+        </div>
+        ...
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+  // TODO better to embed artcard in a form to deal with
+  // pesky authenticity token issue...
+  function upVote(swiper) {
+    var slide = swiper.slides[swiper.previousIndex];
+    var id = $(slide).find('.art-card').data('artwork-id');
+    $.ajax({
+      url: `artworks/${id}/upvote`,
+      method: 'PUT'
+    });
+  }
+
+  var mySwiper = new Swiper('.swiper-container', {
+    // Optional parameters
+    direction: 'vertical',
+    loop: true,
+
+    // If we need pagination
+    pagination: '.swiper-pagination',
+
+    // Navigation arrows
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+
+    // And if we need scrollbar
+    scrollbar: '.swiper-scrollbar',
+
+    centeredSlides: true,
+    keyboardControl: true,
+    onSlideNext: upVote,
+  });
+
+</script>
