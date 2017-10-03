@@ -6,13 +6,13 @@
       <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
-          <%= render 'artworks/art_card', artwork: @artworks.first %>
+          <%= render 'artworks/art_card_ui', artwork: @artworks.first %>
         </div>
         <div class="swiper-slide">
-          <%= render 'artworks/art_card', artwork: @artworks.second %>
+          <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
         </div>
         <div class="swiper-slide">
-          <%= render 'artworks/art_card', artwork: @artworks.third %>
+          <%= render 'artworks/art_card_ui', artwork: @artworks.third %>
         </div>
         ...
       </div>
@@ -36,11 +36,12 @@
   // pesky authenticity token issue...
   function upVote(swiper) {
     var slide = swiper.slides[swiper.previousIndex];
-    var id = $(slide).find('.art-card').data('artwork-id');
-    $.ajax({
-      url: `artworks/${id}/upvote`,
-      method: 'PUT'
-    });
+    $(slide).find('.swiper-upvote-link').trigger('click');
+  }
+
+  function downVote(swiper) {
+    var slide = swiper.slides[swiper.previousIndex];
+    $(slide).find('.swiper-downvote-link').trigger('click');
   }
 
   var mySwiper = new Swiper('.swiper-container', {
@@ -61,6 +62,7 @@
     centeredSlides: true,
     keyboardControl: true,
     onSlideNext: upVote,
+    onSlidePrev: downVote
   });
 
 </script>

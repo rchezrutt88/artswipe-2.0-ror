@@ -40,4 +40,5 @@ RSpec.describe ArtworksController, type: :controller do
       expect(@user.voted_up_on?(@artwork)).to be true
     end
   end
+
 end
