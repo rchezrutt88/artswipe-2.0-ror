@@ -36,12 +36,12 @@
   // pesky authenticity token issue...
   function upVote(swiper) {
     var slide = swiper.slides[swiper.previousIndex];
-    $(slide).find('.swiper-upvote-link').trigger('click');
+    $(slide).find('.swiper-upvote-link')[0].click();
   }
 
   function downVote(swiper) {
     var slide = swiper.slides[swiper.previousIndex];
-    $(slide).find('.swiper-downvote-link').trigger('click');
+    $(slide).find('.swiper-downvote-link')[0].click();
   }
 
   var mySwiper = new Swiper('.swiper-container', {
