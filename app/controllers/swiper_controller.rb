@@ -1,5 +1,6 @@
 class SwiperController < ArtworksController
-  before_action :swiper, :load_artworks
+  before_action :load_artworks
+  before_action :authenticate_user!, :swiper
 
   def swiper
 

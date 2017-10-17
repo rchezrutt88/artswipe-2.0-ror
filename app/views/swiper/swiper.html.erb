@@ -32,6 +32,8 @@
 <script>
 
 
+
+
   // TODO better to embed artcard in a form to deal with
   // pesky authenticity token issue...
   function upVote(swiper) {
@@ -60,9 +62,8 @@
     scrollbar: '.swiper-scrollbar',
 
     centeredSlides: true,
-    keyboardControl: true,
-    onSlideNext: upVote,
-    onSlidePrev: downVote
+    onSlideNext: downVote,
+    onSlidePrev: upVote
   });
 
 </script>
