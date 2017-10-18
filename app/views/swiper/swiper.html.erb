@@ -5,37 +5,45 @@
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide">
-          <%= render 'artworks/art_card_ui', artwork: @artworks.first %>
-        </div>
-        <div class="swiper-slide">
-          <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
-        </div>
-        <div class="swiper-slide">
-          <%= render 'artworks/art_card_ui', artwork: @artworks.third %>
-        </div>
-        ...
+        <% @artworks.take(2).each do |artwork| %>
+            <div class='swiper-slide'>
+              <%= render 'artworks/art_card_ui', artwork: artwork %>
+            </div>
+        <% end %>
+
       </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
 
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-
-      <!-- If we need scrollbar -->
-      <div class="swiper-scrollbar"></div>
     </div>
   </div>
 </div>
 
 <script>
 
-
+  slideArray = [];
+  <% @artworks.each do |artwork| %>
+    slideArray.push($('<%= escape_javascript( render 'artworks/art_card_ui', artwork: artwork)%>'));
+  <% end %>
 
 
   // TODO better to embed artcard in a form to deal with
   // pesky authenticity token issue...
+  var mySwiper = new Swiper('.swiper-container', {
+    // Optional parameters
+
+    // Navigation arrows
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+
+    centeredSlides: true,
+    onSlideNextStart: downVote,
+    onSlidePrevStart: upVote,
+    onSlideNextEnd: loadNextSlide,
+    onSlidePrevEnd: loadNextSlide,
+    loop: true,
+    loopedSlides: 2
+
+  });
+
   function upVote(swiper) {
     var slide = swiper.slides[swiper.previousIndex];
     $(slide).find('.swiper-upvote-link')[0].click();
@@ -44,26 +52,33 @@
   function downVote(swiper) {
     var slide = swiper.slides[swiper.previousIndex];
     $(slide).find('.swiper-downvote-link')[0].click();
+
   }
 
-  var mySwiper = new Swiper('.swiper-container', {
-    // Optional parameters
-    direction: 'vertical',
-    loop: true,
+  function loadNextSlide(swiper) {
+    if (swiper.realIndex == 1) {
+      $(swiper.slides[0]).find('.art-card').replaceWith(slideArray.pop());
+    } else if (swiper.realIndex == 0) {
+      $(swiper.slides[1]).find('.art-card').replaceWith(slideArray.pop());
+    }
+    swiper.update();
+  }
 
-    // If we need pagination
-    pagination: '.swiper-pagination',
 
-    // Navigation arrows
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
 
-    // And if we need scrollbar
-    scrollbar: '.swiper-scrollbar',
-
-    centeredSlides: true,
-    onSlideNext: downVote,
-    onSlidePrev: upVote
+  $(document).keydown(function (e) {
+    switch (e.which) {
+      // left
+      case 37:
+        mySwiper.slideNext();
+        break;
+      // right
+      case 39:
+        mySwiper.slidePrev();
+        break;
+    }
   });
+
+
 
 </script>

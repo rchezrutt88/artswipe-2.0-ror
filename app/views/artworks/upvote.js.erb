@@ -2,4 +2,4 @@ $('#thumbs-up-icon-<%= @artwork.id %>').toggleClass('fa-thumbs-up fa-thumbs-o-up
 <% if current_user.voted_up_on? @artwork %>
   $('#thumbs-down-icon-<%= @artwork.id %>').removeClass('fa-thumbs-down').addClass('fa-thumbs-o-down')
 <% end %>
-$('#art-card-<%= @artwork.id %> .score').text('Score: <%= score @artwork %>')
+$('.art-card-<%= @artwork.id %> .score').text('Score: <%= score @artwork %>')
