@@ -7,7 +7,7 @@
         <!-- Slides -->
         <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
         <%= render 'artworks/art_card_ui', artwork: @artworks.first %>
-        <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
+        <%= render 'artworks/art_card_ui', artwork: @artworks.third %>
 
       </div>
     </div>
@@ -17,7 +17,7 @@
 <script>
 
   slideArray = [];
-  <% @artworks[2..-1].each do |artwork| %>
+  <% @artworks[3..-1].each do |artwork| %>
   slideArray.push($('<%= escape_javascript( render 'artworks/art_card_ui', artwork: artwork)%>'));
   <% end %>
 
@@ -48,7 +48,6 @@
   function downVote(swiper) {
     var slide = swiper.slides[swiper.previousIndex];
     $(slide).find('.swiper-downvote-link')[0].click();
-
   }
 
   function loadNextSlides(swiper) {
