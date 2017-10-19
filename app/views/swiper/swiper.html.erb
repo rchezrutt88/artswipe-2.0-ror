@@ -5,14 +5,11 @@
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <% @artworks.take(2).each do |artwork| %>
-            <div class='swiper-slide'>
-              <%= render 'artworks/art_card_ui', artwork: artwork %>
-            </div>
-        <% end %>
+        <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
+        <%= render 'artworks/art_card_ui', artwork: @artworks.first %>
+        <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
 
       </div>
-
     </div>
   </div>
 </div>
@@ -20,8 +17,8 @@
 <script>
 
   slideArray = [];
-  <% @artworks.each do |artwork| %>
-    slideArray.push($('<%= escape_javascript( render 'artworks/art_card_ui', artwork: artwork)%>'));
+  <% @artworks[2..-1].each do |artwork| %>
+  slideArray.push($('<%= escape_javascript( render 'artworks/art_card_ui', artwork: artwork)%>'));
   <% end %>
 
 
@@ -35,12 +32,11 @@
     prevButton: '.swiper-button-prev',
 
     centeredSlides: true,
+    initialSlide: 1,
     onSlideNextStart: downVote,
     onSlidePrevStart: upVote,
-    onSlideNextEnd: loadNextSlide,
-    onSlidePrevEnd: loadNextSlide,
-    loop: true,
-    loopedSlides: 2
+    onSlideNextEnd: loadNextSlides,
+    onSlidePrevEnd: loadNextSlides,
 
   });
 
@@ -55,15 +51,16 @@
 
   }
 
-  function loadNextSlide(swiper) {
-    if (swiper.realIndex == 1) {
-      $(swiper.slides[0]).find('.art-card').replaceWith(slideArray.pop());
-    } else if (swiper.realIndex == 0) {
-      $(swiper.slides[1]).find('.art-card').replaceWith(slideArray.pop());
+  function loadNextSlides(swiper) {
+    if (swiper.activeIndex == 0) {
+      swiper.removeSlide(1);
+      swiper.prependSlide(slideArray.pop());
+    } else if (swiper.activeIndex == 2) {
+      swiper.removeSlide(1);
+      swiper.appendSlide(slideArray.pop());
     }
     swiper.update();
   }
-
 
 
   $(document).keydown(function (e) {
@@ -78,7 +75,6 @@
         break;
     }
   });
-
 
 
 </script>

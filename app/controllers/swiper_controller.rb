@@ -8,8 +8,8 @@ class SwiperController < ArtworksController
 
   private
 
-  def load_artworks(limit = nil)
-    @artworks = Artwork.all
+  def load_artworks(limit = 5)
+    @artworks = Artwork.first(10)
   end
 
 end
