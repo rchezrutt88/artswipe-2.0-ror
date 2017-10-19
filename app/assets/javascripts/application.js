@@ -17,5 +17,5 @@
 //= require jquery.Jcrop
 //= require magnific-popup
 //= require jquery-ui
-//= require swiper.jquery
+//= require swiper
 //= require_tree .

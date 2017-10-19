@@ -33,32 +33,35 @@
 
     centeredSlides: true,
     initialSlide: 1,
-    onSlideNextStart: downVote,
-    onSlidePrevStart: upVote,
-    onSlideNextEnd: loadNextSlides,
-    onSlidePrevEnd: loadNextSlides,
+    runCallbacksOnInit: false,
 
+    on: {
+      slideNextTransitionStart: downVote,
+      slidePrevTransitionStart: upVote,
+      slideNextTransitionEnd: loadNextSlides,
+      slidePrevTransitionEnd: loadNextSlides,
+    }
   });
 
-  function upVote(swiper) {
-    var slide = swiper.slides[swiper.previousIndex];
+  function upVote() {
+    var slide = this.slides[this.previousIndex];
     $(slide).find('.swiper-upvote-link')[0].click();
   }
 
-  function downVote(swiper) {
-    var slide = swiper.slides[swiper.previousIndex];
+  function downVote() {
+    var slide = this.slides[this.previousIndex];
     $(slide).find('.swiper-downvote-link')[0].click();
   }
 
-  function loadNextSlides(swiper) {
-    if (swiper.activeIndex == 0) {
-      swiper.removeSlide(1);
-      swiper.prependSlide(slideArray.pop());
-    } else if (swiper.activeIndex == 2) {
-      swiper.removeSlide(1);
-      swiper.appendSlide(slideArray.pop());
+  function loadNextSlides() {
+    if (this.activeIndex == 0) {
+      this.removeSlide(1);
+      this.prependSlide(slideArray.pop());
+    } else if (this.activeIndex == 2) {
+      this.removeSlide(1);
+      this.appendSlide(slideArray.pop());
     }
-    swiper.update();
+    this.update();
   }
 
 
