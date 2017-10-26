@@ -3,80 +3,33 @@
   <div class='col-md-12'>
     <div class="swiper-container">
       <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
         <!-- Slides -->
-        <%= render 'artworks/art_card_ui', artwork: @artworks.second %>
-        <%= render 'artworks/art_card_ui', artwork: @artworks.first %>
-        <%= render 'artworks/art_card_ui', artwork: @artworks.third %>
 
-      </div>
+        <% @artworks.each_with_index do |artwork, index| %>
+            <%= render 'artworks/art_card_ui', artwork: artwork, index: index %>
+        <% end %>
+
+
     </div>
   </div>
 </div>
 
 <script>
+  var card = $('.swiper-slide')[0];
+  var manager = new Hammer.Manager(card);
+  var Swipe = new Hammer.Swipe();
+  manager.add(Swipe);
+  var deltaX = 0;
+  var deltaY = 0;
 
-  slideArray = [];
-  <% @artworks[3..-1].each do |artwork| %>
-  slideArray.push($('<%= escape_javascript( render 'artworks/art_card_ui', artwork: artwork)%>'));
-  <% end %>
+  manager.on('swipe', function (e) {
+    deltaX = deltaX + e.deltaX;
+    var direction = e.offsetDirection;
+    var translate3d = 'translate3d(' + deltaX + 'px, 0, 0)';
 
-
-  // TODO better to embed artcard in a form to deal with
-  // pesky authenticity token issue...
-  var mySwiper = new Swiper('.swiper-container', {
-    // Optional parameters
-
-    // Navigation arrows
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-
-    centeredSlides: true,
-    initialSlide: 1,
-    runCallbacksOnInit: false,
-
-    on: {
-      slideNextTransitionStart: downVote,
-      slidePrevTransitionStart: upVote,
-      slideNextTransitionEnd: loadNextSlides,
-      slidePrevTransitionEnd: loadNextSlides,
+    if (direction === 4 || direction === 2) {
+      e.target.style.transform = translate3d;
     }
   });
-
-  function upVote() {
-    var slide = this.slides[this.previousIndex];
-    $(slide).find('.swiper-upvote-link')[0].click();
-  }
-
-  function downVote() {
-    var slide = this.slides[this.previousIndex];
-    $(slide).find('.swiper-downvote-link')[0].click();
-  }
-
-  function loadNextSlides() {
-    if (this.activeIndex == 0) {
-      this.removeSlide(1);
-      this.prependSlide(slideArray.pop());
-    } else if (this.activeIndex == 2) {
-      this.removeSlide(1);
-      this.appendSlide(slideArray.pop());
-    }
-    this.update();
-  }
-
-
-  $(document).keydown(function (e) {
-    switch (e.which) {
-      // left
-      case 37:
-        mySwiper.slideNext();
-        break;
-      // right
-      case 39:
-        mySwiper.slidePrev();
-        break;
-    }
-  });
-
 
 </script>

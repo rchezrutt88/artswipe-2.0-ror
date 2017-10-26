@@ -2,6 +2,7 @@
   "name": "artswipe3",
   "private": true,
   "dependencies": {
+    "hammerjs": "^2.0.8",
     "jquery-jcrop": "^0.9.13"
   }
 }

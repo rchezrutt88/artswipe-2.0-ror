@@ -1,4 +1,4 @@
-<div class='swiper-slide'>
+<div class='swiper-slide' style='z-index: <%= index %>'>
   <div class="art-card art-card-<%= artwork.id %>" data-artwork-id='<%= artwork.id %>'>
     <div class='art-card-container'><h5 class='score'>Score:  <%= score (artwork) %> </h5>
       <%= magnific_img_tag (artwork) %>
