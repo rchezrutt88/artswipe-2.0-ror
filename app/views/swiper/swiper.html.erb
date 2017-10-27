@@ -1,7 +1,7 @@
 <!-- Slider main container -->
-<div class='row justify-content-center'>
-  <div class='col-md-8 offset-md-2'>
-    <div class="swipe-container">
+<div class='row'>
+
+    <div class="swipe-container mx-auto">
       <!-- Additional required wrapper -->
         <!-- Slides -->
 
@@ -20,7 +20,7 @@
 
   var hammer = new Hammer($('.swipe-container')[0]);
   hammer.on('swipe', function (ev) {
-    cons
+    console.log(ev);
   })
 
 </script>

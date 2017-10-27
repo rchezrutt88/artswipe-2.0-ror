@@ -1,12 +1,13 @@
-<div class="art-card art-card-<%= artwork.id %>" data-artwork-id='<%= artwork.id %>'>
-    <div class='art-card-container'>
-      <h5 class='score'>Score:  <%= score (artwork) %> </h5>
-      <%= image_tag artwork.art_image.thumb.url, draggable: false, size: 200, alt: 'image missing' %>
-      <h4><%= artwork.title %></h4>
-      <h5><%= artwork.artist %></h5>
-    </div>
+<div class="art-card card mx-auto" id='art-card-<%= artwork.id %>' data-artwork-id='<%= artwork.id %>'>
+  <div class='art-image-container'>
+    <%= image_tag artwork.art_image.thumb.url, alt: 'image missing', draggable: false, class: 'img-fluid' %>
+  </div>
+  <div class="card-body">
+    <%= link_to artwork do %>
+        <h4 class="card-title"><%= artwork.title %></h4>
+    <% end %>
+    <h5 class="card-title"><%= artwork.artist %></h5>
     <%= up_vote(artwork) %>
     <%= down_vote(artwork) %>
+  </div>
 </div>
-
-

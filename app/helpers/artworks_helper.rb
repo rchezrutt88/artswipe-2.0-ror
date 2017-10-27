@@ -35,6 +35,7 @@ module ArtworksHelper
     )
   end
 
+
   def score(artwork)
     artwork.get_upvotes.size - artwork.get_downvotes.size
   end
