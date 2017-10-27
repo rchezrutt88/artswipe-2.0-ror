@@ -4,18 +4,25 @@
 
 .art-card {
   background-color: antiquewhite;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 240px;
-  margin: auto;
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    margin: auto;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   .art-card-container {
     padding: 8px 16px;
     margin: auto;
     display: inline-block;
+  }
+}
+
+.swiper-slide {
+  .swiper-upvote-link {
+    display: none;
+  }
+  .swiper-downvote-link {
+    display: none;
   }
 }
 

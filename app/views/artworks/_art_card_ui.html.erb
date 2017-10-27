@@ -1,11 +1,12 @@
-<div class='swiper-slide' style='z-index: <%= index %>'>
-  <div class="art-card art-card-<%= artwork.id %>" data-artwork-id='<%= artwork.id %>'>
-    <div class='art-card-container'><h5 class='score'>Score:  <%= score (artwork) %> </h5>
-      <%= magnific_img_tag (artwork) %>
+<div class="art-card art-card-<%= artwork.id %>" data-artwork-id='<%= artwork.id %>'>
+    <div class='art-card-container'>
+      <h5 class='score'>Score:  <%= score (artwork) %> </h5>
+      <%= image_tag artwork.art_image.thumb.url, draggable: false, size: 200, alt: 'image missing' %>
       <h4><%= artwork.title %></h4>
       <h5><%= artwork.artist %></h5>
     </div>
     <%= up_vote(artwork) %>
     <%= down_vote(artwork) %>
-  </div>
 </div>
+
+

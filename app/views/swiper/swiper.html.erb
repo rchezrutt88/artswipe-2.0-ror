@@ -1,12 +1,14 @@
 <!-- Slider main container -->
-<div class='row'>
-  <div class='col-md-12'>
-    <div class="swiper-container">
+<div class='row justify-content-center'>
+  <div class='col-md-8 offset-md-2'>
+    <div class="swipe-container">
       <!-- Additional required wrapper -->
         <!-- Slides -->
 
         <% @artworks.each_with_index do |artwork, index| %>
+          <div class='swiper-slide' <%= 'style=display:none' if index > 0 %>>
             <%= render 'artworks/art_card_ui', artwork: artwork, index: index %>
+          </div>
         <% end %>
 
 
@@ -15,21 +17,10 @@
 </div>
 
 <script>
-  var card = $('.swiper-slide')[0];
-  var manager = new Hammer.Manager(card);
-  var Swipe = new Hammer.Swipe();
-  manager.add(Swipe);
-  var deltaX = 0;
-  var deltaY = 0;
 
-  manager.on('swipe', function (e) {
-    deltaX = deltaX + e.deltaX;
-    var direction = e.offsetDirection;
-    var translate3d = 'translate3d(' + deltaX + 'px, 0, 0)';
-
-    if (direction === 4 || direction === 2) {
-      e.target.style.transform = translate3d;
-    }
-  });
+  var hammer = new Hammer($('.swipe-container')[0]);
+  hammer.on('swipe', function (ev) {
+    cons
+  })
 
 </script>
