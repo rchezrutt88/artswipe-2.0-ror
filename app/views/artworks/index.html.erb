@@ -24,7 +24,7 @@
   <% @artworks.each_slice(6) do |artworks| %>
       <div class="row">
         <% artworks.each do |a| %>
-            <div class="col-md-2" align='center'>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2" align='center'>
               <%= render 'art_card', artwork: a %>
             </div>
         <% end %>

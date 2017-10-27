@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'art_card', artwork: @artwork %>
+<div class='row'>
+  <div class='col-md-7 mx-auto'>
+    <%= render 'art_card', artwork: @artwork %>
+  </div>
+
+</div>
 
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
 <%= link_to 'Back', artworks_path %>

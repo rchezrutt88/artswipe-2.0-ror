@@ -30,7 +30,7 @@ module ArtworksHelper
 
   def magnific_img_tag(artwork)
     link_to(
-      (image_tag artwork.art_image.thumb.url, size: 200, alt: 'image missing'),
+      (image_tag artwork.art_image.thumb.url, alt: 'image missing', class: 'img-fluid'),
       artwork.art_image.url
     )
   end

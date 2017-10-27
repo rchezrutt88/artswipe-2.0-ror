@@ -1,12 +1,12 @@
-<div class="art-card" id='art-card-<%= artwork.id %>' data-artwork-id='<%= artwork.id %>'>
-  <div class='art-card-container'><h5 class='score'>Score:  <%= score (artwork) %> </h5>
+<div class="art-card card mx-auto" id='art-card-<%= artwork.id %>' data-artwork-id='<%= artwork.id %>'>
+  <div class='art-image-container'>
     <%= magnific_img_tag (artwork) %>
-    <h4><%= artwork.title %></h4>
-    <h5><%= artwork.artist %></h5>
-    <%= thumbs_up (artwork) %>
-    <%= thumbs_down (artwork) %>
-    <%= link_to 'Show', artwork, class: 'btn btn-sm btn-primary' %>
-    <%= link_to 'Edit', edit_artwork_path(artwork), class: 'btn btn-sm btn-primary' %>
-    <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+  </div>
+  <div class="card-body">
+    <%= link_to artwork do %>
+        <h4 class="card-title"><%= artwork.title %></h4>
+    <% end %>
+    <h5 class="card-title"><%= artwork.artist %></h5>
+    <h6>Score:  <%= score (artwork) %> </h6>
   </div>
 </div>

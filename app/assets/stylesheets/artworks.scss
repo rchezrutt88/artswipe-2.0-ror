@@ -2,19 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//.art-card {
+//  background-color: antiquewhite;
+//  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+//  transition: 0.3s;
+//  width: 240px;
+//  &:hover {
+//    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+//  }
+//  .art-card-container {
+//    padding: 8px 16px;
+//    margin: auto;
+//    display: inline-block;
+//  }
+//}
+
+.art-image-container {
+  width: 98%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.art-image-thumb {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .art-card {
-  background-color: antiquewhite;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 240px;
-  &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  }
-  .art-card-container {
-    padding: 8px 16px;
-    margin: auto;
-    display: inline-block;
-  }
+  max-width: 615px;
 }
 
 .swiper-slide {
@@ -26,8 +41,11 @@
   }
 }
 
-.art-card-grid {
-  .row {
-    margin-bottom: 30px;
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
   }
 }
