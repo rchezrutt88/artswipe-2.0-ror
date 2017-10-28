@@ -1,26 +1,44 @@
 <!-- Slider main container -->
-<div class='row'>
-
-    <div class="swipe-container mx-auto">
-      <!-- Additional required wrapper -->
-        <!-- Slides -->
-
-        <% @artworks.each_with_index do |artwork, index| %>
-          <div class='swiper-slide' <%= 'style=display:none' if index > 0 %>>
-            <%= render 'artworks/art_card_ui', artwork: artwork, index: index %>
-          </div>
-        <% end %>
-
-
-    </div>
+<div class="swipe-container">
+  <div class='row'>
+    <% @artworks.each_with_index do |artwork, index| %>
+        <div class='swiper-slide <%= index > 0 ? 'inactive-slide' : 'active-slide' %>' >
+          <%= render 'artworks/art_card_ui', artwork: artwork, index: index %>
+        </div>
+    <% end %>
   </div>
 </div>
+
 
 <script>
 
   var hammer = new Hammer($('.swipe-container')[0]);
   hammer.on('swipe', function (ev) {
     console.log(ev);
-  })
+    var slide = $('.active-slide');
+    console.log(slide);
+    if (ev.deltaX > 0) {
+      handleSwipeRight(slide);
+    }
+    if (ev.deltaX < 0) {
+      handleSwipeLeft(slide);
+    }
+      });
+
+  function handleSwipeRight(slide) {
+    $(slide).append("<div class='status like'>Like!</div>");
+    $(slide).addClass('rotate-right').delay(500).fadeOut();
+    $(slide).next().removeClass('inactive-slide').addClass('active-slide');
+//    $(slide).find('.status').remove();
+  }
+
+  function handleSwipeLeft(slide) {
+    $(slide).append("<div class='status dislike'>Dislike!</div>");
+    $(slide).addClass('rotate-left').delay(500).fadeOut();
+    $(slide).next().removeClass('inactive-slide').addClass('active-slide');
+
+
+
+  }
 
 </script>

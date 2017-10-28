@@ -32,10 +32,58 @@
   max-width: 615px;
 }
 
+.active-slide {
+}
+
+.inactive-slide {
+  display: none;
+}
+
+.rotate-right {
+  transform: rotate(30deg) scale(0.8);
+  margin-left: 400px;
+  cursor: e-resize;
+  z-index: 10;
+  transition: 1s;
+}
+.rotate-left {
+  transform: rotate(-30deg) scale(0.8);
+  margin-left: -400px;
+  cursor: w-resize;
+  z-index: 10;
+  transition: 1s;
+}
+
+.like {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid green;
+  color: green;
+  text-transform: uppercase;
+  font-size: 15px;
+  top: 50px;
+  right: 40px;
+  text-shadow: none;
+}
+.dislike {
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid red;
+  color: red;
+  text-transform: uppercase;
+  font-size: 15px;
+  top: 50px;
+  left: 40px;
+  text-shadow: none;
+}
+
 .swipe-container {
   padding-left: 20px;
   padding-right: 20px;
+  min-height: 600px;
+  height: 100%;
 }
+
 
 .swiper-slide {
   .swiper-upvote-link {
