@@ -25,20 +25,28 @@
     }
       });
 
+  function switchSlide() {
+    $(this).removeClass('active-slide').addClass('inactive-slide');
+    $(this).next().removeClass('inactive-slide').addClass('active-slide');
+  }
+
   function handleSwipeRight(slide) {
-    $(slide).append("<div class='status like'>Like!</div>");
-    $(slide).addClass('rotate-right').delay(500).fadeOut();
-    $(slide).next().removeClass('inactive-slide').addClass('active-slide');
+    $(slide).find('.art-card').prepend("<div class='status like'><h1>LIKE!</h1></div>");
+    $(slide).addClass('rotate-right').fadeOut(1000, switchSlide);
 //    $(slide).find('.status').remove();
   }
 
   function handleSwipeLeft(slide) {
-    $(slide).append("<div class='status dislike'>Dislike!</div>");
-    $(slide).addClass('rotate-left').delay(500).fadeOut();
-    $(slide).next().removeClass('inactive-slide').addClass('active-slide');
-
-
-
+    $(slide).find('.art-card').prepend("<div class='status dislike'><h1>DISLIKE!</h1></div>");
+    $(slide).addClass('rotate-left').fadeOut(1000, switchSlide);
+  }
+  
+  function upvote() {
+    
+  }
+  
+  function downvote() {
+    
   }
 
 </script>
