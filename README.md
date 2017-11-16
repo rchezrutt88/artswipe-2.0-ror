@@ -1,5 +1,11 @@
 # ArtSwipe
 
+## Setup
+
+Before you can try ArtSwipe for yourself you must first seed the dev database with some artworks by running `rake db:seed_artworks`. I have included a small data sample in  `lib/artworks.csv` (with the associated images in `lib/assets`).
+
+Please note that you will need to create an account to use the Swiper feature.
+
 ## Overview
 
 ### What is ArtSwipe?
