@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   resources :artworks do
     member do
-      put 'upvote', to: 'artworks#upvote'
-      put 'downvote', to: 'artworks#downvote'
+      patch 'upvote', to: 'artworks#upvote'
+      patch 'downvote', to: 'artworks#downvote'
     end
   end
 
