@@ -2,7 +2,7 @@
 <div class="swipe-container">
   <div class='row'>
     <% @artworks.each_with_index do |artwork, index| %>
-        <div class='swiper-slide <%= index > 0 ? 'inactive-slide' : 'active-slide' %>' >
+        <div class='swiper-slide <%= index > 0 ? 'inactive-slide' : 'active-slide' %>'>
           <%= render 'artworks/art_card_ui', artwork: artwork, index: index %>
         </div>
     <% end %>
@@ -12,6 +12,65 @@
 
 <script>
 
+  (function () {
+    var hammer = new Hammer($('.swipe-container')[0]);
+    hammer.on('swipe', function (ev) {
+      if (ev.deltaX > 0) {
+        handleSwipeRight();
+      }
+      if (ev.deltaX < 0) {
+        handleSwipeLeft();
+      }
+    });
+
+    $(':root').keydown(handleArrowKeyDown);
+
+    function activeSlide() {
+      return $('.active-slide');
+    }
+
+    function handleArrowKeyDown(e) {
+      if (e.keyCode == 37) {
+        return handleSwipeLeft();
+      }
+      if (e.keyCode == 39) {
+        return handleSwipeRight();
+      }
+    }
+
+    function switchSlide() {
+      $(this).removeClass('active-slide').addClass('inactive-slide');
+      $(this).next().removeClass('inactive-slide').addClass('active-slide');
+    }
+
+    function handleSwipeRight() {
+      var slide = activeSlide();
+      upvote(slide);
+      slide.find('.art-card').prepend('<div class=\'status like\'><h1>LIKE!</h1></div>');
+      slide.addClass('rotate-right').fadeOut(1000, switchSlide);
+//    $(slide).find('.status').remove();
+    }
+
+    function handleSwipeLeft() {
+      var slide = activeSlide();
+      downvote(slide);
+      slide.find('.art-card').prepend('<div class=\'status dislike\'><h1>DISLIKE!</h1></div>');
+      slide.addClass('rotate-left').fadeOut(1000, switchSlide);
+    }
+
+
+    function upvote(slide) {
+      var form = slide.find('.upvote-form').get()[0];
+      Rails.fire(form, 'submit');
+
+    }
+
+    function downvote(slide) {
+      var form = slide.find('.upvote-form').get()[0];
+      Rails.fire(form, 'submit');
+    }
+  })();
+
   var hammer = new Hammer($('.swipe-container')[0]);
   hammer.on('swipe', function (ev) {
     if (ev.deltaX > 0) {
@@ -20,16 +79,16 @@
     if (ev.deltaX < 0) {
       handleSwipeLeft();
     }
-      });
+  });
 
-  $(":root").keydown(handleArrowKeyDown);
+  $(':root').keydown(handleArrowKeyDown);
 
   function activeSlide() {
-    return $(".active-slide");
+    return $('.active-slide');
   }
 
-  function handleArrowKeyDown (e) {
-    if (e.keyCode == 37 ) {
+  function handleArrowKeyDown(e) {
+    if (e.keyCode == 37) {
       return handleSwipeLeft();
     }
     if (e.keyCode == 39) {
@@ -45,7 +104,7 @@
   function handleSwipeRight() {
     var slide = activeSlide();
     upvote(slide);
-    slide.find('.art-card').prepend("<div class='status like'><h1>LIKE!</h1></div>");
+    slide.find('.art-card').prepend('<div class=\'status like\'><h1>LIKE!</h1></div>');
     slide.addClass('rotate-right').fadeOut(1000, switchSlide);
 //    $(slide).find('.status').remove();
   }
@@ -53,20 +112,19 @@
   function handleSwipeLeft() {
     var slide = activeSlide();
     downvote(slide);
-    slide.find('.art-card').prepend("<div class='status dislike'><h1>DISLIKE!</h1></div>");
+    slide.find('.art-card').prepend('<div class=\'status dislike\'><h1>DISLIKE!</h1></div>');
     slide.addClass('rotate-left').fadeOut(1000, switchSlide);
   }
 
 
-
   function upvote(slide) {
-    var form = slide.find(".upvote-form").get()[0];
+    var form = slide.find('.upvote-form').get()[0];
     Rails.fire(form, 'submit');
 
   }
 
   function downvote(slide) {
-    var form = slide.find(".upvote-form").get()[0];
+    var form = slide.find('.upvote-form').get()[0];
     Rails.fire(form, 'submit');
   }
 

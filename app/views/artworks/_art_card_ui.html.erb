@@ -12,9 +12,7 @@
   </div>
 
   <%= form_for artwork, namespace: 'upvote', html: {class: 'upvote-form'}, url: upvote_artwork_url(artwork), remote: true do |f| %>
-    <%= f.submit %>
   <% end %>
   <%= form_for artwork, namespace: 'downvote', html: {class: 'downvote-form'}, url: downvote_artwork_url(artwork), remote: true do |f| %>
-  <%= f.submit %>
   <% end %>
 </div>
