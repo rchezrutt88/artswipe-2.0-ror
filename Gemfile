@@ -50,7 +50,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'annotate', '~> 2.7', '>= 2.7.1'
   gem 'capybara', '~> 2.13.0'
-  gem 'factory_girl_rails', '~> 4.7'
+  gem 'factory_bot_rails'
   gem 'faker', '~> 1.6', '>= 1.6.6'
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 3.6'

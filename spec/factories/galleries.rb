@@ -10,7 +10,7 @@
 #  longitude  :float
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :gallery do
     name "MyString"
   end
