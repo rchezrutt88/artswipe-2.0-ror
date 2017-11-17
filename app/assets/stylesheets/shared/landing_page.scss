@@ -1,0 +1,23 @@
+.background-rothko {
+  background-image: image_url("background_rothko_resized.jpg");
+  background-position: center;
+  height: 1125px;
+  padding-top: 100px;
+  .jumbotron-override {
+    background-color: $ivory-black-transparent;
+    .jumbotron-heading {
+      h1 {
+        color: white;
+        font-family: 'Spectral SC', serif;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: $ivory-black;
+        font-size: 7em;
+      }
+    }
+    .jumbotron-subheading {
+      color: $gold-leaf;
+    }
+  }
+}
+
+

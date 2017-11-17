@@ -1,6 +1,8 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: %i[show edit update destroy upvote downvote]
-  before_action :authenticate_user!, only: %i[new create edit update upvote downvote]
+  before_action :authenticate_user!, only: %i[new create update upvote downvote]
+
+  layout 'artworks'
 
   # GET /art_works
   # GET /art_works.json

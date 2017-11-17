@@ -1,0 +1,11 @@
+.navbar-override {
+  background-color: $ivory-black;
+  a {
+  color: white;
+  }
+  .nav-item {
+    a:hover {
+      color: $gold-leaf;
+    }
+  }
+}
