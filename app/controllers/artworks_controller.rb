@@ -1,6 +1,7 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: %i[show edit update destroy upvote downvote]
-  before_action :authenticate_user!, only: %i[new create update upvote downvote]
+  before_action :authenticate_any!, only: [:upvote, :downvote]
+  before_action :authenticate_admin!, only: [:new, :create, :update, :edit, :destroy]
 
   layout 'artworks'
 
