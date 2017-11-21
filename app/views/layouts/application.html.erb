@@ -9,7 +9,11 @@
 </head>
 
 <body>
-<%= render 'layouts/navbar' %>
+<% if admin_signed_in? %>
+    <%= render 'layouts/admin/navbar' %>
+<% else %>
+    <%= render 'layouts/navbar' %>
+<% end %>
 <%= render '/flash' %>
 <%= content_for?(:content) ? yield(:content) : yield %>
 <%= render 'layouts/footer' %>
