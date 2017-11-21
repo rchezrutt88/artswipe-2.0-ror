@@ -18,9 +18,7 @@
 //}
 
 .art-image-container {
-  width: 98%;
-  margin: auto;
-  margin-top: 15px;
+  padding: 5px;
 }
 
 .art-image-thumb {
@@ -30,6 +28,19 @@
 
 .art-card {
   max-width: 615px;
+  border: $gold-leaf solid;
+  border-width: medium;
+  color: $ivory-black;
+  font-size: small;
+  h4 {
+
+  }
+  h5 {
+
+  }
+  h6 {
+
+  }
 }
 
 .active-slide {
