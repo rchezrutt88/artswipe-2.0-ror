@@ -27,4 +27,5 @@ class Artwork < ApplicationRecord
   acts_as_votable
 
   validates_uniqueness_of :title
+  validates_presence_of :title, :artist, :art_image
 end

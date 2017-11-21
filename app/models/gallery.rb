@@ -13,4 +13,5 @@
 class Gallery < ApplicationRecord
   has_many :artworks
   validates_uniqueness_of :name
+  validates_presence_of :name
 end
