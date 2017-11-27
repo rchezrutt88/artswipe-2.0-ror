@@ -6,9 +6,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class='nav-item'>
-        <span>ADMIN</span>
-      </li>
       <li class="nav-item">
         <%= link_to swiper_url, class: 'nav-link' do %>
             Start Swiping <span class='sr-only'>(current)</span>
@@ -26,7 +23,7 @@
       </li>
     </ul>
     <ul class='nav navbar-nav ml-auto'>
-      <%= render '/profile_link' if user_signed_in? %>
+      <%= render 'admins/profile_link' if admin_signed_in? %>
       <li class='nav-item'>
         <%= link_to_unless admin_signed_in?, 'Sign In', new_admin_session_url, { class: 'nav-link' } do %>
             <%= link_to 'Sign Out', destroy_admin_session_url, class: 'nav-link', method: :delete %>
