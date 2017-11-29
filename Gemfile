@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
 end
 
 group :development do
