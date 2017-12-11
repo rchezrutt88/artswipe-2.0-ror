@@ -17,12 +17,6 @@
 <%= render '/flash' %>
 <%= content_for?(:content) ? yield(:content) : yield %>
 <%= render 'layouts/footer' %>
-<div id='map' style='height: 200px'>
-
-</div>
-
-  <%= javascript_include_tag "google_earth" %>
-  <%= javascript_include_tag  "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_KEY']}&callback=initMap", async: true, defer: true %>
 
 </body>
 </html>

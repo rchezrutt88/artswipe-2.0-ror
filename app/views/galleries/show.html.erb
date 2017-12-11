@@ -5,5 +5,12 @@
   <%= @gallery.name %>
 </p>
 
+<div id='map' style='height: 400px; width: 400px' data-lat='<%= @gallery.latitude %>' data-lng='<%= @gallery.longitude %>'>
+
+</div>
+
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+
+<%= javascript_include_tag "google_earth" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_KEY']}&callback=initMap", async: true, defer: true %>

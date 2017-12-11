@@ -8,5 +8,6 @@
     <% end %>
     <h5 class="card-title"><%= artwork.artist %></h5>
     <h6>Score:  <%= score (artwork) %> </h6>
+    <h6>Location:  <%= artwork.gallery&.name || 'gallery missing' %> </h6>
   </div>
 </div>

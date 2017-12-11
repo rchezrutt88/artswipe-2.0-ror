@@ -26,7 +26,7 @@ namespace :db do
   desc "associate artworks with galleries"
   task associate_artworks_with_galleries: :environment do
     ActiveRecord::Base.logger = Logger.new(STDOUT)
-    Artwork.each do |artwork|
+    Artwork.all.each do |artwork|
       gallery = Gallery.find_by(name: artwork.location)
       artwork.update(gallery: gallery)
     end
