@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {registrations: 'admins/registrations'}
-  resources :galleries
-  devise_for :users
-
   root 'application#show'
 
-  resources :artworks do
+  devise_for :admins, controllers: {registrations: 'admins/registrations'}
+  devise_for :users
+
+  namespace :admin do
+    resources :artworks
+    resources :galleries
+  end
+
+  resources :galleries, except: [:create, :edit, :destroy]
+
+  resources :artworks, except: [:create, :edit, :destroy] do
     member do
       patch 'upvote', to: 'artworks#upvote'
       patch 'downvote', to: 'artworks#downvote'
