@@ -12,6 +12,8 @@
 
 FactoryBot.define do
   factory :gallery do
-    name "MyString"
+    sequence(:name) { |n| "#{Faker::Hipster.word}_#{n}" }
+    latitude {Faker::Address.latitude}
+    longitude {Faker::Address.longitude}
   end
 end

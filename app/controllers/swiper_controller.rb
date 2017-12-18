@@ -1,6 +1,6 @@
 class SwiperController < ArtworksController
   before_action :load_artworks
-  before_action :authenticate_user!, :swiper
+  before_action :authenticate_any!, :swiper
 
   def swiper
 
@@ -8,8 +8,8 @@ class SwiperController < ArtworksController
 
   private
 
-  def load_artworks(limit = 5)
-    @artworks = Artwork.first(10)
+  def load_artworks(limit = 10)
+    @artworks = Artwork.first(limit)
   end
 
 end

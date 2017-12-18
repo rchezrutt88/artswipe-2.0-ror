@@ -1,6 +1,9 @@
 @import "bootstrap";
 @import "jquery.Jcrop";
-@import "shared/*";
+
+@import "shared/colors";
+@import "shared/global";
+
 @import "artworks";
 @import "landing_page";
 @import "galleries";
@@ -8,8 +11,3 @@
 @import "font-awesome";
 @import "magnific-popup";
 @import "swiper";
-
-body {
-  background-color: $prussian-blue;
-  color: $white;
-}
