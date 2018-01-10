@@ -4,6 +4,9 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
+    if params[:distance_from]
+      user_location = current_user
+    end
     @galleries = Gallery.all
   end
 
