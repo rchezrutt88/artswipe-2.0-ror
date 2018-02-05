@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_any!
-   unless admin_signed_in? || user_signed_in?
+   unless admin_signed_in? || user_signed_in? || controller_name == 'demo'
      redirect_to new_user_session_url
    end
   end

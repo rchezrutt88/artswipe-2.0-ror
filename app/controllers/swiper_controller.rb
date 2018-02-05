@@ -2,8 +2,9 @@ class SwiperController < ArtworksController
   before_action :load_artworks
   before_action :authenticate_any!, :swiper
 
-  def swiper
+  layout 'artworks'
 
+  def swiper
   end
 
   private

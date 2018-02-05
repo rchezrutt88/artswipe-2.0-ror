@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :galleries
   end
 
+  namespace :demo do
+    get 'swiper'
+  end
+
   resources :galleries, except: [:create, :edit, :destroy]
 
   resources :artworks, except: [:create, :edit, :destroy] do

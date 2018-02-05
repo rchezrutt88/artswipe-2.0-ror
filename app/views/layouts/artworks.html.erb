@@ -1,6 +1,5 @@
 <%= content_for :content do %>
     <div class='container'>
-      <%= yield(:artworks_content) or yield %>
       <%= content_for?(:artworks_content) ? yield(:artworks_content) : yield %>
     </div>
 <% end %>
